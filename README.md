@@ -35,6 +35,8 @@ Your task is to improve and enhance an existing Timer App based on the following
    2. **Simultaneous Timers:**
       - Update the app to allow multiple timers to run simultaneously (currently, only one timer runs at a time).
 
+      
+
    3. **Snack Bar Behavior:**
       - When a timer is completed:
         - A snack bar notification should display.

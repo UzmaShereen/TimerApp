@@ -10,8 +10,8 @@ import Button from './Button';
 interface TimerModalProps {
   isOpen: boolean;
   onClose: () => void;
-  timer?: Timer; // Optional, only for edit mode
-  mode: 'add' | 'edit'; // To differentiate between add and edit modes
+  timer?: Timer; 
+  mode: 'add' | 'edit'; 
 }
 
 export const AddEditModal: React.FC<TimerModalProps> = ({ isOpen, onClose, timer, mode }) => {
@@ -209,7 +209,7 @@ export const AddEditModal: React.FC<TimerModalProps> = ({ isOpen, onClose, timer
               label={mode === 'add' ? 'Add Timer' : 'Save Changes'}
               type="submit"
               variant="primary"
-              disabled={!isTitleValid || !isTimeValid}
+            //   disabled={!isTitleValid || !isTimeValid}
             />
           </div>
         </form>

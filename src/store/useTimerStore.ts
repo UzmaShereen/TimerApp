@@ -26,12 +26,20 @@ const timerSlice = createSlice({
         timer.isRunning = !timer.isRunning;
       }
     },
-    updateTimer: (state, action) => {
-      const timer = state.timers.find(timer => timer.id === action.payload);
-      if (timer && timer.isRunning) {
-        timer.remainingTime -= 1;
-        timer.isRunning = timer.remainingTime > 0;
-      }
+    // updateTimer: (state, action) => {
+    //   const timer = state.timers.find(timer => timer.id === action.payload);
+    //   if (timer && timer.isRunning) {
+    //     timer.remainingTime -= 1;
+    //     timer.isRunning = timer.remainingTime > 0;
+    //   }
+    // },
+    updateTimer: (state) => {
+      state.timers.forEach((timer) => {
+        if (timer.isRunning) {
+          timer.remainingTime -= 1;
+          timer.isRunning = timer.remainingTime > 0;
+        }
+      });
     },
     restartTimer: (state, action) => {
       const timer = state.timers.find(timer => timer.id === action.payload);
@@ -75,7 +83,7 @@ export const useTimerStore = () => {
     addTimer: (timer: Omit<Timer, 'id' | 'createdAt'>) => dispatch(addTimer(timer)),
     deleteTimer: (id: string) => dispatch(deleteTimer(id)),
     toggleTimer: (id: string) => dispatch(toggleTimer(id)),
-    updateTimer: (id: string) => dispatch(updateTimer(id)),
+    updateTimer: () => dispatch(updateTimer()), // No ID needed
     restartTimer: (id: string) => dispatch(restartTimer(id)),
     editTimer: (id: string, updates: Partial<Timer>) => dispatch(editTimer({ id, updates })),
   };
