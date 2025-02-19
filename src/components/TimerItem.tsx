@@ -3,11 +3,13 @@ import { Trash2, RotateCcw, Pencil } from 'lucide-react';
 import { Timer } from '../types/timer';
 import { formatTime } from '../utils/time';
 import { useTimerStore } from '../store/useTimerStore';
-import { EditTimerModal } from './EditTimerModal';
+// import { EditTimerModal } from './EditTimerModal';
 import { TimerAudio } from '../utils/audio';
 import { TimerControls } from './TimerControls';
 import { TimerProgress } from './TimerProgress';
 import { showToast } from './common/Toaster';
+import { AddEditModal } from './common/AddEditmodel';
+
 
 interface TimerItemProps {
   timer: Timer;
@@ -127,11 +129,14 @@ export const TimerItem: React.FC<TimerItemProps> = ({ timer }) => {
         </div>
       </div>
 
-      <EditTimerModal
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-        timer={timer}
-      />
+    
+
+<AddEditModal
+  isOpen={isEditModalOpen}
+  onClose={() => setIsEditModalOpen(false)}
+  timer={timer}
+  mode="edit"
+/>
     </>
   );
 };
